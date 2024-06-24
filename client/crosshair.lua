@@ -1,6 +1,6 @@
 local config = require 'config'
 
-local function weaponLoop(weapon)
+function weaponLoop(weapon)
     if not cache.weapon then 
         SendNUIMessage({
             type = "dot",
@@ -25,6 +25,17 @@ local function weaponLoop(weapon)
     end
 end
 
+local function onPlayerLoaded()
+    if config.alwaysOn then 
+        SendNUIMessage({
+            type = "dot",
+            display = true
+        })
+    else 
+        weaponLoop(cache.weapon)
+    end
+end
+
 lib.onCache('weapon', function(value)
     if config.alwaysOn then return end
     if not cache.weapon and value then
@@ -32,15 +43,9 @@ lib.onCache('weapon', function(value)
     end
 end)
 
+AddEventHandler('QBCore:Client:OnPlayerLoaded', onPlayerLoaded)
+
 AddEventHandler('onResourceStart', function(resourceName)
-    if GetCurrentResourceName() == resourceName then
-        if config.alwaysOn then 
-            SendNUIMessage({
-                type = "dot",
-                display = true
-            })
-        else 
-            weaponLoop(cache.weapon)
-        end
-    end
+    if cache.resource ~= resourceName then return end
+    onPlayerLoaded()
 end)
