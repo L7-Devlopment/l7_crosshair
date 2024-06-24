@@ -1,6 +1,6 @@
 local config = require 'config'
 
-function weaponLoop(weapon)
+local function weaponLoop(weapon)
     if not cache.weapon then 
         SendNUIMessage({
             type = "dot",
