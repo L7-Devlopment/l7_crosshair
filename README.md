@@ -5,10 +5,10 @@
 # Features:
 - Default Crosshair
     - Crosshair acts like normal
-    - Hides Kill Confirmation on kill
+    - Hides kill confirmation on kill
 - 24/7 Crosshair
     - Crosshair is always on
-    - Hides Kill Confirmation on kill
+    - Hides kill confirmation on kill
 
 # Dependencies:
 - [ox_lib](https://github.com/overextended/ox_lib/releases)
