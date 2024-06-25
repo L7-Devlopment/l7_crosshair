@@ -1,4 +1,4 @@
-# vii_crosshair
+# l7_crosshair
 
 # Features:
 - Default Crosshair
